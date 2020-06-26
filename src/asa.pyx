@@ -20,42 +20,40 @@ np.import_array()
 
 
 asa_codes = {
-
-    NORMAL_EXIT: """Given the criteria set, the search has run its
+    0: """Given the criteria set, the search has run its
     normal course, e.g., when Limit_Acceptances or Limit_Generated is
-    reached.""", 
-
-    P_TEMP_TOO_SMALL: """A parameter temperature was too small using the
+    reached.""",
+    1: """A parameter temperature was too small using the
     set criteria. Often this is an acceptable status code.""",
 
-    C_TEMP_TOO_SMALL: """The cost temperature was too small using the
+    2: """The cost temperature was too small using the
     set criteria. Often this is an acceptable status code.""",
 
-    COST_REPEATING: """The cost function value repeated a number of
+    3: """The cost function value repeated a number of
     times using the set criteria. Often this is an acceptable status
     code.""",
 
-    TOO_MANY_INVALID_STATES: """Too many repetitive generated states
+    4: """Too many repetitive generated states
     were invalid using the set criteria. A result of raising
     CostParameterError to include constraints.""",
 
-    IMMEDIATE_EXIT: """The user has set OPTIONS−>Immediate_Exit to TRUE,
+    5: """The user has set OPTIONS−>Immediate_Exit to TRUE,
     or deleted file asa_exit_anytime when ASA_EXIT_ANYTIME is TRUE. This
     should not happen as it is converted to an exception.""",
 
-    INVALID_USER_INPUT: """The user has introduced invalid input. When
+    7: """The user has introduced invalid input. When
     entering asa(), a function asa_test_asa_options() checks out many
     user−defined parameters and OPTIONS, and prints out invalid OPTIONS
     when ASA_PRINT is set to TRUE.""",
 
-    INVALID_COST_FUNCTION: """The user has returned a value of the cost
+    8: """The user has returned a value of the cost
     function to asa () which is not a valid number, e.g., not between
     -MAX_DOUBLE and MAX_DOUBLE.  Or, the user has returned a value of a
     parameter no longer within its proper range (excluding cases where
     the user has set the lower bound equal to the upper bound to remove
     a parameter from consideration).""",
 
-    INVALID_COST_FUNCTION_DERIV: """While calculating numerical cost
+    9: """While calculating numerical cost
     derivatives, a value of the cost function was returned which is not
     a valid number, e.g., not between -MAX_DOUBLE and MAX_DOUBLE. Or,
     while calculating numerical cost derivatives, a value of a parameter
@@ -63,7 +61,7 @@ asa_codes = {
     has set the lower bound equal to the upper bound to remove a
     parameter from consideration) was set.""",
 
-    CALLOC_FAILED: """Calloc memory allocation has failed in asa.c. This
+    -1: """Calloc memory allocation has failed in asa.c. This
     error will call Exit_ASA(), the location will be printed to stdout,
     and asa() will return the double -1 to the calling program. In
     asa_usr.c, if asa() returns this *exit_code a warning will be
@@ -315,7 +313,7 @@ def asa(object func not None,
             n_generated=opts.N_Generated,
             )
 
-    if exit_code == IMMEDIATE_EXIT:
+    if exit_code == 5:
         assert data[3] != NULL, "asa(): IMMEDIATE_EXIT without info"
         exc_info = <object>data[3]
         Py_DECREF(exc_info)
