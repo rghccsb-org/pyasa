@@ -1,4 +1,4 @@
-# -*- coding: utf8 -*-
+# -*- coding: utf-8 -*-
 #
 #   pyasa - python bindings for Adaptive Simulated Annealing
 #   Copyright (C) 2012 Robert Jordens <jordens@gmail.com>
@@ -38,5 +38,3 @@ x0 = -d
 xmax = 1e1*np.ones_like(x0)
 
 print asa.asa(cost, x0, -xmax, xmax, full_output=True)
-
-

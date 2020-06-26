@@ -1,4 +1,4 @@
-# -*- coding: utf8 -*-
+# -*- coding: utf-8 -*-
 #
 #   pyasa - python bindings for Adaptive Simulated Annealing
 #   Copyright (C) 2012 Robert Jordens <jordens@gmail.com>
