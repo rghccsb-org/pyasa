@@ -1,9 +1,8 @@
-/* $Id: asa_test_usr,v 28.12 2012/07/02 23:58:49 ingber Exp ingber $ */
+/* $Id: asa_test_usr,v 30.34 2020/06/06 19:13:13 ingber Exp ingber $ */
 
 CC = gcc
 	-g
 	-Wall
-	-ffloat-store
 	-DASA_TEST=TRUE
 
 exit code = 2
