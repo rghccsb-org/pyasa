@@ -1,8 +1,9 @@
 #!/usr/bin/python
-# -*- coding: utf8 -*-
+# -*- coding: utf-8 -*-
 #
 #   pyasa - python bindings for Adaptive Simulated Annealing
 #   Copyright (C) 2012 Robert Jordens <jordens@gmail.com>
+#   Modified by Cole Lyman <cole@colelyman.com>
 
 try:
     from setuptools import setup, Extension
@@ -17,7 +18,7 @@ import os
 setup(
     name="pyasa",
     description="Adaptive Simulated Annealing",
-    long_description= """Python bindings for the ASA code from 
+    long_description= """Python bindings for the ASA code from
     http://www.ingber.com/#ASA""",
     version="0.5+dev",
     author="Robert Jordens",
