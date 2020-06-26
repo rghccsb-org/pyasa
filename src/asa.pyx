@@ -73,47 +73,48 @@ asa_codes = {
 
 
 class CostParameterError(Exception):
-    """Exception to be raised in the cost function 
+    """Exception to be raised in the cost function
     if the parameters supplied are invalid."""
     pass
 
 
-def asa(object func not None,
-        np.ndarray[np.double_t, ndim=1, mode="c"] x0 not None,
-        np.ndarray[np.double_t, ndim=1, mode="c"] xmin not None,
-        np.ndarray[np.double_t, ndim=1, mode="c"] xmax not None,
-        int full_output=False,
-        tuple args=(),
-        dict kwargs={},
-        np.ndarray[np.int_t, ndim=1, mode="c"] parameter_type=None,
-        long rand_seed=696969,
-        int limit_acceptances=1000,
-        int limit_generated=99999,
-        int limit_invalid_generated_states=1000,
-        double accepted_to_generated_ratio=1e-4,
-        double cost_precision=1e-18,
-        int maximum_cost_repeat=5,
-        int number_cost_samples=5,
-        double temperature_ratio_scale=1e-5,
-        double cost_parameter_scale_ratio=1.,
-        double temperature_anneal_scale=100., 
-        int include_integer_parameters=False,
-        int user_initial_parameters=False,
-        int sequential_parameters=-1,
-        double initial_parameter_temperature=1.,
-        int acceptance_frequency_modulus=100,
-        int generated_frequency_modulus=10000,
-        int reanneal_cost=1,
-        int reanneal_parameters=1,
-        double delta_x=1e-3, 
-        bytes asa_out_file=b"/dev/null",
-        ):
+def run_asa(
+    object func not None,
+    np.ndarray[np.double_t, ndim=1, mode="c"] x0 not None,
+    np.ndarray[np.double_t, ndim=1, mode="c"] xmin not None,
+    np.ndarray[np.double_t, ndim=1, mode="c"] xmax not None,
+    int full_output=False,
+    tuple args=(),
+    dict kwargs={},
+    np.ndarray[np.int_t, ndim=1, mode="c"] parameter_type=None,
+    long rand_seed=696969,
+    int limit_acceptances=1000,
+    int limit_generated=99999,
+    int limit_invalid_generated_states=1000,
+    double accepted_to_generated_ratio=1e-4,
+    double cost_precision=1e-18,
+    int maximum_cost_repeat=5,
+    int number_cost_samples=5,
+    double temperature_ratio_scale=1e-5,
+    double cost_parameter_scale_ratio=1.,
+    double temperature_anneal_scale=100.,
+    int include_integer_parameters=False,
+    int user_initial_parameters=False,
+    int sequential_parameters=-1,
+    double initial_parameter_temperature=1.,
+    int acceptance_frequency_modulus=100,
+    int generated_frequency_modulus=10000,
+    int reanneal_cost=1,
+    int reanneal_parameters=1,
+    double delta_x=1e-3,
+    bytes asa_out_file=b"/dev/null",
+):
     """Adaptive Simulated Annealing
 
     Adaptive Simulated Annealing (ASA) is a C-language code developed to
     statistically find the best global fit of a nonlinear constrained
     non-convex cost-function over a D-dimensional space [1]_.
-    
+
     Parameters
     -----------
     func : function
@@ -170,7 +171,7 @@ def asa(object func not None,
     number_cost_samples : int : 5
     temperature_ratio_scale : double : 1e-5
     cost_parameter_scale_ratio : double : 1.
-    temperature_anneal_scale : double : 100. 
+    temperature_anneal_scale : double : 100.
     include_integer_parameters : int : False
     user_initial_parameters : int : False
     sequential_parameters : int : -1
@@ -200,12 +201,12 @@ def asa(object func not None,
     .. [1] L. Ingber, Adaptive Simulated Annealing (ASA),
        Global optimization C-code, Caltech Alumni Association,
        Pasadena, CA, 1993, http://www.ingber.com/#ASA-CODE
-    .. [2] L. Ingber, Very fast simulated re-annealing, 
+    .. [2] L. Ingber, Very fast simulated re-annealing,
        Mathematical Computer Modelling, vol 12, 8, pp 967-973, 1989,
        http://www.ingber.com/asa89_vfsr.pdf
     .. [3] L. Ingber, ASA Readme, http://www.ingber.com/ASA-README.pdf
     .. [4] A. Corana, M. Marchesi, C. Martini, S. Ridella,
-       Minimizing multimodal functions of continuous variables with 
+       Minimizing multimodal functions of continuous variables with
        the "simulated annealing" algorithm, ACM Trans. Mathl. Software,
        vol 13, 3, pp 262-279, 1987
 
