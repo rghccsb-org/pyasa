@@ -21,7 +21,7 @@ def cost(x):
 x0 = np.array([999., -1007, 1001, -903])
 xmax = 1e4*np.ones_like(x0)
 
-print asa.asa(cost, x0, -xmax, xmax, full_output=True)
+print(asa.run_asa(cost, x0, -xmax, xmax, full_output=True))
 
 # simple leak check
 #while True:
@@ -37,4 +37,4 @@ def cost(x):
 x0 = -d
 xmax = 1e1*np.ones_like(x0)
 
-print asa.asa(cost, x0, -xmax, xmax, full_output=True)
+print(asa.run_asa(cost, x0, -xmax, xmax, full_output=True))
