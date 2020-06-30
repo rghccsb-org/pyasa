@@ -18,7 +18,7 @@ char exit_msg[160];             /* temp storage for exit messages */
 #if HAVE_ANSI
 double
 asa (double (*user_cost_function)
-      
+
      (double *, double *, double *, double *, double *, ALLOC_INT *, int *,
       int *, int *, USER_DEFINES *),
      double (*user_random_generator) (LONG_INT *), LONG_INT * seed,
@@ -3629,7 +3629,7 @@ EXIT_asa:
 #if HAVE_ANSI
 int
 asa_exit (double (*user_cost_function)
-           
+
           (double *, double *, double *, double *, double *, ALLOC_INT *,
            int *, int *, int *, USER_DEFINES *), double *final_cost,
           double *parameter_initial_final, double *parameter_minimum,
@@ -4945,7 +4945,7 @@ reanneal (parameter_minimum,
 #if HAVE_ANSI
 void
 cost_derivatives (double (*user_cost_function)
-                   
+
                   (double *, double *, double *, double *, double *,
                    ALLOC_INT *, int *, int *, int *, USER_DEFINES *),
                   double *parameter_minimum, double *parameter_maximum,

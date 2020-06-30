@@ -7,6 +7,8 @@
 
 """Adaptive Simulated Annealing"""
 
+import ctypes
+import random
 import sys
 
 import numpy as np
@@ -86,8 +88,8 @@ def run_asa(
     int full_output=False,
     tuple args=(),
     dict kwargs={},
-    np.ndarray[np.int_t, ndim=1, mode="c"] parameter_type=None,
-    long rand_seed=696969,
+    np.ndarray[int, ndim=1, mode="c"] parameter_type=None,
+    long rand_seed=-1,
     int limit_acceptances=1000,
     int limit_generated=99999,
     int limit_invalid_generated_states=1000,
@@ -247,6 +249,8 @@ def run_asa(
     661 60972
 
     """
+    if rand_seed == -1:
+        rand_seed = random.randrange(sys.maxsize)
     cdef USER_DEFINES opts
     cdef LONG_INT seed=rand_seed
     cdef int exit_code=0, cost_flag=1
@@ -267,6 +271,8 @@ def run_asa(
 
     if parameter_type is None:
         parameter_type = -np.ones([n], dtype=np.int)
+    else:
+        parameter_type = parameter_type.astype(ctypes.c_int)
 
     opts.Limit_Acceptances = limit_acceptances
     opts.Limit_Generated = limit_generated
@@ -306,7 +312,7 @@ def run_asa(
     f0 = c_asa(cost_function, randflt, &seed,
             &x0[0], &xmin[0], &xmax[0],
             &tang[0], &curve[0,0],
-            &param_num, <int*>&parameter_type[0],
+            &param_num, &parameter_type[0],
             &cost_flag, &exit_code, &opts)
 
     asa_opts = dict(
